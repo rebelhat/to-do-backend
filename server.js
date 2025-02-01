@@ -53,7 +53,17 @@ app.delete('/tasks/:id', (req, res) => {
   res.status(204).send();
 });
 
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
+// Enable CORS for your front-end domain
+app.use(cors({
+  origin: 'https://to-do-backend-rjd2.onrender.com/tasks', // Replace with your front-end URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
+
+// Your existing routes...
